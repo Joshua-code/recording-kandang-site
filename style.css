@@ -1,0 +1,30 @@
+/* The two public pages Google Play links to. Light only, like the app. */
+:root {
+  --petrol: #0f5c63;
+  --ink: #1b2326;
+  --muted: #4a5a5f;
+  --page: #f3f6f7;
+  --card: #ffffff;
+  --line: #d9e2e4;
+  --danger: #b3261e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+header { background: var(--petrol); color: #fff; padding: 20px 16px; }
+header h1 { margin: 0; font-size: 1.35rem; }
+header p { margin: 4px 0 0; opacity: 0.9; }
+header a { color: #fff; }
+main { max-width: 760px; margin: 0 auto; padding: 16px; }
+section { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 4px 20px 16px; margin: 0 0 16px; }
+h2 { font-size: 1.15rem; color: var(--petrol); margin: 18px 0 6px; }
+h3 { font-size: 1rem; margin: 16px 0 4px; }
+.updated, .lang { color: var(--muted); font-size: 0.9rem; }
+.lang a { color: var(--petrol); }
+ol, ul { padding-left: 1.25rem; }
+a { color: var(--petrol); }
+.note { border-left: 4px solid var(--danger); padding: 4px 12px; background: #fdf1f0; }
