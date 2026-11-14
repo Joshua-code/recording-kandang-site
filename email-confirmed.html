@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Recording Kandang: Email Dikonfirmasi / Email Confirmed</title>
+<link rel="stylesheet" href="style.css">
+<script>
+  // Supabase sends people here (the hosted Site URL) after the confirmation
+  // link, with the outcome after "#": a session on success, error=... when the
+  // link expired or was used already. Read it once, then wipe it from the
+  // address bar so the session token does not stay in history or a bookmark.
+  // The account is confirmed on Supabase's side before this page opens; the
+  // app signs in on its own, so nothing here uses the token.
+  (function () {
+    var hash = window.location.hash || '';
+    var query = window.location.search || '';
+    var failed = /(^[#?]|&)error(_code)?=/.test(hash) || /(^[#?]|&)error(_code)?=/.test(query);
+    if (hash || failed) {
+      try { history.replaceState(null, '', window.location.pathname); } catch (e) {}
+    }
+    document.documentElement.className = failed ? 'failed' : 'confirmed';
+  })();
+</script>
+<style>
+  .when-failed { display: none; }
+  html.failed .when-confirmed { display: none; }
+  html.failed .when-failed { display: block; }
+  .ok { border-left: 4px solid var(--petrol); padding: 4px 12px; background: #eef6f6; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Recording Kandang</h1>
+  <p>Konfirmasi email · Email confirmation</p>
+</header>
+<main>
+  <p class="lang"><a href="#id">Bahasa Indonesia</a> · <a href="#en">English</a></p>
+
+  <section id="id" lang="id">
+    <div class="when-confirmed">
+      <h2>Email Anda sudah dikonfirmasi</h2>
+      <p class="ok">Akun Recording Kandang Anda siap dipakai.</p>
+      <ol>
+        <li>Kembali ke aplikasi <strong>Recording Kandang</strong> di HP Anda.</li>
+        <li>Masuk dengan email dan kata sandi yang Anda buat.</li>
+      </ol>
+      <p>Halaman ini boleh ditutup.</p>
+    </div>
+    <div class="when-failed">
+      <h2>Tautan ini sudah tidak berlaku</h2>
+      <p>Tautan konfirmasi hanya bisa dipakai sekali dan ada batas waktunya.</p>
+      <ol>
+        <li>Coba masuk di aplikasi <strong>Recording Kandang</strong>. Jika berhasil, email Anda sudah dikonfirmasi.</li>
+        <li>Jika aplikasi mengatakan email belum dikonfirmasi, buat akun lagi dengan email yang sama: kami akan mengirim tautan baru.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="en" lang="en">
+    <div class="when-confirmed">
+      <h2>Your email is confirmed</h2>
+      <p class="ok">Your Recording Kandang account is ready to use.</p>
+      <ol>
+        <li>Go back to the <strong>Recording Kandang</strong> app on your phone.</li>
+        <li>Sign in with the email and password you chose.</li>
+      </ol>
+      <p>You can close this page.</p>
+    </div>
+    <div class="when-failed">
+      <h2>This link no longer works</h2>
+      <p>A confirmation link works once, and only for a limited time.</p>
+      <ol>
+        <li>Try signing in to the <strong>Recording Kandang</strong> app. If it works, your email is already confirmed.</li>
+        <li>If the app says your email is not confirmed, create the account again with the same email: we will send a new link.</li>
+      </ol>
+    </div>
+  </section>
+</main>
+</body>
+</html>
